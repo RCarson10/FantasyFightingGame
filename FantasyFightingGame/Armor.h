@@ -30,12 +30,33 @@ public:
 	string setName(string n) { name = n; }
 	string getTier() { return tier; }
 	string setTier(string t) { tier = t; }
-	 virtual void = 0;
+	virtual void use() = 0;
 
 
 };
+class hazmatSuit : public Armor
+{
+public:
+	hazmatSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier)
 
+		Armor::use();
 
+};
+class knightArmor : public Armor
+{
+public:
+	knightArmor(int c, int d, string n, string t) : Armor(cost, defense, name, tier)
+
+		Armor::use();
+
+};
+class mechSuit : public Armor
+{
+public:
+	mechSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier)
+
+		Armor::use();
+};
 
 
 

@@ -16,8 +16,8 @@ private:
 	int lvl;
 	int money;
 	string name;
-	Weapon uWeapon;
-	Armor uArmor;
+	Weapon* uWeapon;
+	Armor* uArmor;
 
 public:
 	Player(int h, int l, int m, string n)
@@ -35,6 +35,7 @@ public:
 	int setLvl(int l) { lvl = l; }
 	int getMoney() { return money; }
 	int setMoney(int m) { money = m; }
+	bool isHp0() { return hp == 0; }
 
 
 };

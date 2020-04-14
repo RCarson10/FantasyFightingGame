@@ -30,11 +30,31 @@ public:
 	string setName(string n) { name = n; }
 	string getTier() { return tier; }
 	string setTier(string t) { tier = t; }
-	virtual void = 0;
-
+	virtual void use() = 0;
 
 };
+class pistol : public Weapon
+{
+public:
+	pistol(int c, int d, string n, string t) : Weapon(cost, damage, name, tier)
+		
+	Weapon::use();
+};
+class rifle : public Weapon
+{
+public:
+	rifle(int c, int d, string n, string t) : Weapon(cost, damage, name, tier)
+		
+	Weapon::use();
+};
 
+class rayGun : public Weapon
+{
+public: 
+	rayGun(int c, int d, string n, string t) : Weapon(cost, damage, name, tier)
+		
+	Weapon::use();
+};
 
 
 
