@@ -44,13 +44,7 @@ class CoronaBoss : public Enemy
 {
 public:
 	CoronaBoss(int h, int l, string n, int d): Enemy(hp, lvl, name, damage) {}
-	void use() 
-	{ 
-		setHp(1000);
-		setDamage(rand() % 500 + 150);
-		setLvl(10);
-		
-	};
+	void use() {};
 };
 class CoronaSpecial : public Enemy
 {
