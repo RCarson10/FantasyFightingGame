@@ -6,10 +6,13 @@
 #include <cstring>
 #include <utility>
 #include <iostream>
+#include <ctime>
+#include<fstream>
 
 using namespace std;
 
-class Player
+[Serialiazble]
+class Player 
 {
 private: 
 	int hp;
@@ -26,6 +29,7 @@ public:
 		name = n;
 		money = m;
 		lvl = l; 
+		srand(time(NULL));	
 	}
 	string getName() { return name;  }
 	string setName(string n) { name = n; }

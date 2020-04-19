@@ -5,6 +5,7 @@
 #include <utility>
 #include <iostream>
 
+
 using namespace std;
 
 class Weapon
@@ -24,8 +25,8 @@ public:
 	}
 	int getCost() { return cost; }
 	int setCost(int c) { cost = c; }
-	int getdamage() { return damage; }
-	int setdamage(int d) { damage = d; }
+	int getDamage() { return damage; }
+	int setDamage(int d) { damage = d; }
 	string getName() { return name; }
 	string setName(string n) { name = n; }
 	string getTier() { return tier; }
@@ -36,24 +37,46 @@ public:
 class pistol : public Weapon
 {
 public:
-	pistol(int c, int d, string n, string t) : Weapon(cost, damage, name, tier)
+	pistol(int c, int d, string n, string t) : Weapon(cost, damage, name, tier) {}
 		
-	Weapon::use();
+	void use() 
+	{ 
+		setDamage(rand() % 100 + 50) ;
+		setCost(150);
+		setName("Pistol");
+		setTier("Low");
+	};
+
+
 };
 class rifle : public Weapon
 {
 public:
-	rifle(int c, int d, string n, string t) : Weapon(cost, damage, name, tier)
-		
-	Weapon::use();
+	rifle(int c, int d, string n, string t) : Weapon(cost, damage, name, tier) {}
+
+	void use() 
+	{ 
+		setDamage(rand() % 115 + 85); 
+		setCost(300);
+		setName("Rifle");
+		setTier("Mid");
+	};
+
 };
 
 class rayGun : public Weapon
 {
 public: 
-	rayGun(int c, int d, string n, string t) : Weapon(cost, damage, name, tier)
-		
-	Weapon::use();
+	rayGun(int c, int d, string n, string t) : Weapon(cost, damage, name, tier) {}
+
+	void use() 
+	{ 
+		setDamage(rand() % 150 + 135); 
+		setCost(650);
+		setName("RayGun");
+		setTier("High");
+	};
+
 };
 
 

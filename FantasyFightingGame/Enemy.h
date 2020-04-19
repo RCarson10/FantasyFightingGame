@@ -5,12 +5,13 @@
 #include <cstring>
 #include <utility>
 #include <iostream>
+#include<ctime>
 
 using namespace std;
 
 class Enemy
 {
-private:
+protected:
 	int hp;
 	int lvl;
 	string name;
@@ -20,6 +21,7 @@ private:
 public:
 	Enemy(int h, int l, string n, int d)
 	{
+		
 		hp = h;
 		name = n;
 		lvl = l;
@@ -31,33 +33,52 @@ public:
 	int setHp(int h) { hp = h; }
 	int getLvl() { return lvl; }
 	int setLvl(int l) { lvl = l; }
-	int getdamage() { return damage; }
-	int setdamage(int d) { damage = d; }
+	int getDamage() { return damage; }
+	int setDamage(int d) { damage = d; }
 	bool isHp0() { return hp == 0; }
 	virtual void use() = 0;
 
 
 };
-class CoronaBoss
+class CoronaBoss : public Enemy
 {
 public:
-	CoronaBoss()
-		use() void;
-	use() void;
+	CoronaBoss(int h, int l, string n, int d): Enemy(hp, lvl, name, damage) {}
+	void use() 
+	{ 
+		setHp(1000);
+		setDamage(rand() % 500 + 150);
+		setLvl(10);
+		
+	};
 };
-class CoronaSpecial
+class CoronaSpecial : public Enemy
 {
 public:
-	CoronaSpecial()
-		use()  void;
-	use() void;
+	CoronaSpecial(int h, int l, string n, int d): Enemy(hp, lvl, name, damage) {}
+	void use()
+	{
+		setHp(rand() % 750 + 500 );
+		setDamage(rand() % 250 + 100);
+		setLvl(rand() % 9 + 5);
+		
+	};
+
+
 };
-class CoronaGrunt
+class CoronaGrunt : public Enemy
 {
 public:
-	CoronaGrunt()
-		use() void;
-	use()void; 
+	CoronaGrunt(int h, int l, string n, int d) : Enemy(hp, lvl, name, damage) {}
+	void use()
+	{
+		setHp(rand() % 500 + 100 );
+		setDamage(damage * rand() % 100 + 50);
+		setLvl(rand() % 5 + 1);
+
+	};
+	
+	
 };
 
 

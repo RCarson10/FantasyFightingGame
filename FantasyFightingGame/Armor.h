@@ -37,25 +37,48 @@ public:
 class hazmatSuit : public Armor
 {
 public:
-	hazmatSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier)
+	hazmatSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier){}
 
-		Armor::use();
+	void use() 
+	{ 
+		setDefense(250); 
+		setCost(100);
+		setName("HAZMATSUIT");
+		setTier("Low");
+
+	};
+		
 
 };
 class knightArmor : public Armor
 {
 public:
-	knightArmor(int c, int d, string n, string t) : Armor(cost, defense, name, tier)
+	knightArmor(int c, int d, string n, string t) : Armor(cost, defense, name, tier) {}
 
-		Armor::use();
+	void use() 
+	{ 
+		setDefense(500); 
+		setCost(250);
+		setName("KNIGHTARMOR");
+		setTier("Mid");
+	};
+
+
 
 };
 class mechSuit : public Armor
 {
 public:
-	mechSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier)
+	mechSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier) {}
+		void use() 
+		{ 
+			setDefense(1000);
+			setCost(500);
+			setName("MECHSUIT");
+			setTier("High");
+		};
 
-		Armor::use();
+
 };
 
 
