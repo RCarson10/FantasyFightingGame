@@ -15,7 +15,6 @@
 
 using namespace std;
 
-[Serialiazble]
 class Player 
 {
 private: 
@@ -27,7 +26,7 @@ private:
 	Armor* uArmor;
 	vector<Asset*> Gear;
 public:
-	Player(int h, int l, int m, string n)
+	Player(int h = 100, int l = 1 , int m = 0, string n = "Player")
 	{
 		hp = h;
 		name = n;
@@ -36,19 +35,19 @@ public:
 		srand(time(NULL));	
 	}
 	string getName() { return name;  }
-	string setName(string n) { name = n; }
+	void setName(string n) { name = n; }
 	int getHp() { return hp; }
-	int setHp(int h) { hp = h; }
+	void setHp(int h) { hp = h; }
 	int getLvl() { return lvl; }
-	int setLvl(int l) { lvl = l; }
+	void setLvl(int l) { lvl = l; }
 	int getMoney() { return money; }
-	int setMoney(int m) { money = m; }
+	void setMoney(int m) { money = m; }
 	bool isHp0() { return hp == 0; }
 	Armor* getArmor(){ return uArmor; }
-	Armor* setArmor(Armor* a) { uArmor = a; }
+	void setArmor(Armor* a) { uArmor = a; }
 	Weapon* getWeapon() { return uWeapon; }
-	Weapon* setWeapon(Weapon* w) { uWeapon = w; }
-	string playerSheet()
+	void setWeapon(Weapon* w) { uWeapon = w; }
+	void playerSheet()
 	{
 		cout << "Player Name: " << name << endl;
 		cout << "Player HP: " << hp << endl;

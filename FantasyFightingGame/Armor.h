@@ -26,13 +26,13 @@ public:
 		defense = d;
 	}
 	int getCost() { return cost; }
-	int setCost(int c) { cost = c; }
+	void setCost(int c) { cost = c; }
 	int getDefense() { return defense; }
-	int setDefense(int d) { defense = d; }
+	void setDefense(int d) { defense = d; }
 	string getName() { return name;  }
-	string setName(string n) { name = n; }
+	void setName(string n) { name = n; }
 	string getTier() { return tier; }
-	string setTier(string t) { tier = t; }
+	void setTier(string t) { tier = t; }
 	virtual void use() = 0;
 
 

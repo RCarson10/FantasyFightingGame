@@ -23,7 +23,7 @@ int main()
 	Enemy* Boss = &boss;
 	int health, level, money;
 	string name;
-	Player uPlayer(health, level, money, name);
+	Player uPlayer;
 	int result;
 		
 cout << "Select 1 for new character or 0 to load one in" << endl;
@@ -53,8 +53,6 @@ else if (result == 0)//Read in a previous player file
 		exit(2);
 	}
 	int health, level, money;
-	Weapon* W;
-	Armor* A;
 	string name;
 	while (fin >> health >> level >> money >> name)
 	{
@@ -66,9 +64,11 @@ else
 do{
 	int input;
 	cout << "Enter 1 if you want to view your character sheet.  " << endl;
+	cin >> input;
 	if (input == 1)
 	{
 		uPlayer.playerSheet();
+		userInput(uPlayer);
 	}
 	userInput(uPlayer);
 
@@ -98,7 +98,7 @@ void userInput(Player u)//Using three numbers and calling the functions based on
 	}
 
 	else if (r == 2)
-	{
+	{ 
 		savePlayer(u);
 	}
 	else
@@ -122,7 +122,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	rayGun rg;
 	Weapon* rG = &rg;
 	
-	cout << "What would you like to buy?";
+	
 	
 	if(u.getLvl() >= 5)//Must meet requirements of each weapon or armor
 	{
@@ -145,9 +145,11 @@ Player store(Player u)//The store will have armor available depending on their l
 		cout << P->getName() << P->getCost() << P->getTier() << endl;
 
 	}
+	cout << "What would you like to buy?";
+	cin >> purchase;
 	if (purchase == 1)
 	{
-		if (u.setMoney(u.getMoney - H->getCost()) < 0)//Verifying if they have enough money
+		if (u.getMoney() - H->getCost() < 0)//Verifying if they have enough money
 		{
 			cout << "You do not have enough cash"<< endl;
 		}
@@ -160,7 +162,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	}
 	else if (purchase == 2)
 	{
-		if (u.setMoney(u.getMoney() - P->getCost()) < 0)
+		if (u.getMoney() - P->getCost() < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
@@ -173,7 +175,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	}
 	else if (purchase == 3)
 	{
-		if (u.setMoney(u.getMoney() - K->getCost()) < 0)
+		if(u.getMoney() - K->getCost() < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
@@ -186,7 +188,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	}
 	else if (purchase == 4)
 	{
-		if (u.setMoney(u.getMoney() - R->getCost()) < 0)
+		if (u.getMoney() - R->getCost() < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
@@ -199,7 +201,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	}
 	else if (purchase == 5)
 	{
-		if (u.setMoney(u.getMoney() - M->getCost()) < 0)
+		if (u.getMoney() - M->getCost() < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
@@ -212,7 +214,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	}
 	else if (purchase == 6)
 	{
-		if (u.setMoney(u.getMoney() - rG->getCost()) < 0)
+		if (u.getMoney() - rG->getCost() < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
@@ -225,6 +227,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	}
 	else
 	userInput(u);
+	return u;
 }
 void savePlayer(Player u)//Player will exit the game after saving 
 {
@@ -294,9 +297,7 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 	{
 		
 		Enemy* BOSS = &c;
-		BOSS->setHp(1000);
-		BOSS->setDamage(rand() % 350 + 200);
-		BOSS->setLvl(10);
+	
 		while (u.isHp0() == false || BOSS->isHp0() == false)
 		{
 			BOSS->setHp(BOSS->getHp() - u.getWeapon()->getDamage());
@@ -317,4 +318,5 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 			userInput(u);
 		}
 	}
+	return u;
 }

@@ -27,13 +27,13 @@ public:
 		damage = d;
 	}
 	int getCost() { return cost; }
-	int setCost(int c) { cost = c; }
+	void setCost(int c) { cost = c; }
 	int getDamage() { return damage; }
-	int setDamage(int d) { damage = d; }
+	void setDamage(int d) { damage = d; }
 	string getName() { return name; }
-	string setName(string n) { name = n; }
+	void setName(string n) { name = n; }
 	string getTier() { return tier; }
-	string setTier(string t) { tier = t; }
+	void setTier(string t) { tier = t; }
 	virtual void use() = 0;
 
 };

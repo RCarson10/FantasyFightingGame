@@ -31,13 +31,13 @@ public:
 		damage = d;
 	}
 	string getName() { return name; }
-	string setName(string n) { name = n; }
+	void setName(string n) { name = n; }
 	int getHp() { return hp; }
-	int setHp(int h) { hp = h; }
+	void setHp(int h) { hp = h; }
 	int getLvl() { return lvl; }
-	int setLvl(int l) { lvl = l; }
+	void setLvl(int l) { lvl = l; }
 	int getDamage() { return damage; }
-	int setDamage(int d) { damage = d; }
+	void setDamage(int d) { damage = d; }
 	bool isHp0() { return hp == 0; }
 	virtual void use() = 0;
 
@@ -46,18 +46,19 @@ public:
 class CoronaBoss : public Enemy
 {
 public:
-	CoronaBoss(): Enemy(hp, lvl, name, damage) {}
+	CoronaBoss(): Enemy(1000, 10, "Boss", 0) 
+	{
+		setDamage((rand() % 150) + 201);
+	}
+
 	void use() {};
 };
 class CoronaSpecial : public Enemy
 {
 public:
-	CoronaSpecial(): Enemy(hp, lvl, name, damage) {}
+	CoronaSpecial(): Enemy(((rand() % 750) + 151), (rand() % 9 + 5), "Special", ((rand() % 250) + 100)) {}
 	void use()
 	{
-		setHp(rand() % 750 + 500 );
-		setDamage(rand() % 250 + 100);
-		setLvl(rand() % 9 + 5);
 		
 	};
 
@@ -66,12 +67,9 @@ public:
 class CoronaGrunt : public Enemy
 {
 public:
-	CoronaGrunt() : Enemy(hp, lvl, name, damage) {}
+	CoronaGrunt() : Enemy((rand() % 500 + 100), (rand() % 5 + 1), "Grunt", (damage* rand() % 100 + 50)) {}
 	void use()
 	{
-		setHp(rand() % 500 + 100 );
-		setDamage(damage * rand() % 100 + 50);
-		setLvl(rand() % 5 + 1);
 
 	};
 	
