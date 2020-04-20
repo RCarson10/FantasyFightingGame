@@ -40,14 +40,11 @@ public:
 class pistol : public Weapon
 {
 public:
-	pistol() : Weapon(cost, damage, name, tier) {}
+	pistol() : Weapon(150, ((rand() % 100) + 50), "Pistol", "Low") {}
 		
 	void use() 
 	{ 
-		setDamage(rand() % 100 + 50) ;
-		setCost(150);
-		setName("Pistol");
-		setTier("Low");
+		
 	};
 
 
@@ -55,14 +52,10 @@ public:
 class rifle : public Weapon
 {
 public:
-	rifle() : Weapon(cost, damage, name, tier) {}
+	rifle() : Weapon(300, ((rand() % 115) + 85), "Rifle", "Mid") {}
 
 	void use() 
 	{ 
-		setDamage(rand() % 115 + 85); 
-		setCost(300);
-		setName("Rifle");
-		setTier("Mid");
 	};
 
 };
@@ -70,14 +63,11 @@ public:
 class rayGun : public Weapon
 {
 public: 
-	rayGun() : Weapon(cost, damage, name, tier) {}
+	rayGun() : Weapon(650, ((rand() % 150) + 135), "RayGun", "High") {}
 
 	void use() 
 	{ 
-		setDamage(rand() % 150 + 135); 
-		setCost(650);
-		setName("RayGun");
-		setTier("High");
+		
 	};
 
 };

@@ -40,15 +40,11 @@ public:
 class hazmatSuit : public Armor
 {
 public:
-	hazmatSuit() : Armor(cost, defense, name, tier){}
+	hazmatSuit() : Armor(100, 250, "HAZMATSUIT", "Low"){}
 
 	void use() 
 	{ 
-		setDefense(250); 
-		setCost(100);
-		setName("HAZMATSUIT");
-		setTier("Low");
-
+		
 	};
 		
 
@@ -56,14 +52,11 @@ public:
 class knightArmor : public Armor
 {
 public:
-	knightArmor() : Armor(cost, defense, name, tier) {}
+	knightArmor() : Armor(500, 250, "KNIGHTARMOR", "Mid") {}
 
 	void use() 
 	{ 
-		setDefense(500); 
-		setCost(250);
-		setName("KNIGHTARMOR");
-		setTier("Mid");
+		
 	};
 
 
@@ -72,13 +65,10 @@ public:
 class mechSuit : public Armor
 {
 public:
-	mechSuit() : Armor(cost, defense, name, tier) {}
+	mechSuit() : Armor(1000, 500, "MECHSUIT", "High") {}
 		void use() 
 		{ 
-			setDefense(1000);
-			setCost(500);
-			setName("MECHSUIT");
-			setTier("High");
+			
 		};
 
 

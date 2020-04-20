@@ -11,7 +11,7 @@
 #include <iostream>
 #include <ctime>
 #include<fstream>
-#include <vector>
+
 
 using namespace std;
 
@@ -24,7 +24,7 @@ private:
 	string name;
 	Weapon* uWeapon;
 	Armor* uArmor;
-	vector<Asset*> Gear;
+	
 public:
 	Player(int h = 100, int l = 1 , int m = 0, string n = "Player")
 	{
@@ -32,7 +32,9 @@ public:
 		name = n;
 		money = m;
 		lvl = l; 
-		srand(time(NULL));	
+		srand(time(NULL));
+		uWeapon = new pistol();
+		uArmor = new hazmatSuit();
 	}
 	string getName() { return name;  }
 	void setName(string n) { name = n; }
@@ -53,7 +55,9 @@ public:
 		cout << "Player HP: " << hp << endl;
 		cout << "Player Money: " << money << endl;
 		cout << "Player Level: " << lvl << endl;
+		if(uWeapon != nullptr)
 		cout << "Current weapon: " << uWeapon->getName() << endl;
+		if(uArmor != nullptr)
 		cout << "Current armor: " << uArmor->getName() << endl;
 		
 	}

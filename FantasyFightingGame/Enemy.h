@@ -46,9 +46,9 @@ public:
 class CoronaBoss : public Enemy
 {
 public:
-	CoronaBoss(): Enemy(1000, 10, "Boss", 0) 
+	CoronaBoss(): Enemy(750, 10, "Boss", 0) 
 	{
-		setDamage((rand() % 150) + 201);
+		setDamage((rand() % 200) + 151);
 	}
 
 	void use() {};
@@ -56,7 +56,7 @@ public:
 class CoronaSpecial : public Enemy
 {
 public:
-	CoronaSpecial(): Enemy(((rand() % 750) + 151), (rand() % 9 + 5), "Special", ((rand() % 250) + 100)) {}
+	CoronaSpecial(): Enemy(350, (rand() % 9 + 5), "Special", ((rand() % 150) + 101)) {}
 	void use()
 	{
 		
@@ -67,7 +67,7 @@ public:
 class CoronaGrunt : public Enemy
 {
 public:
-	CoronaGrunt() : Enemy((rand() % 500 + 100), (rand() % 5 + 1), "Grunt", (damage* rand() % 100 + 50)) {}
+	CoronaGrunt() : Enemy(100, (rand() % 5 + 1), "Grunt", (damage* rand() % 75)+ 50) {}
 	void use()
 	{
 
