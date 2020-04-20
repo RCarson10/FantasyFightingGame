@@ -1,5 +1,8 @@
-#ifndef WEAPON.H
-#define WEAPON.H
+//My name is Gaj Carson
+//This is my own work
+
+#ifndef WEAPON_H
+#define WEAPON_H
 
 #include <cstring>
 #include <utility>

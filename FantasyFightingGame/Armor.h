@@ -1,5 +1,8 @@
-#ifndef ARMOR.H
-#define ARMOR.H
+//My name is Gaj Carson
+//This is my own work
+
+#ifndef ARMOR_H
+#define ARMOR_H
 
 #include <cstring>
 #include <utility>

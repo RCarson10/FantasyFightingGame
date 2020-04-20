@@ -1,3 +1,6 @@
+//My name is Gaj Carson
+//This is my own work
+
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Asset.h"

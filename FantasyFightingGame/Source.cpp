@@ -1,3 +1,6 @@
+//My name is Gaj Carson
+//This is my own work
+
 #include <iostream>
 #include<cstring>
 #include "Enemy.h"
@@ -9,10 +12,14 @@
 #include <ctime>
 
 using namespace std;
+void savePlayer(Player u);
+void userInput(Player u);
+Player store(Player u);
+Player quarantineZone(Player u, CoronaBoss Boss);
 
 int main()
 {
-	CoronaBoss boss;
+	CoronaBoss boss;//Initializing Boss and player so i can set the condition for the loop
 	Enemy* Boss = &boss;
 	int health, level, money;
 	string name;
@@ -74,7 +81,7 @@ do{
 
 	return 0;
 }
-void userInput(Player u)
+void userInput(Player u)//Using three numbers and calling the functions based on their choice
 {
 	int r;
 	cout << "Select 0 to go to the store, 1 to go to the Quarantine Zone, and 2 to save your player. " << endl;
@@ -85,7 +92,9 @@ void userInput(Player u)
 	}
 	else if (r == 1) 
 	{
-
+		CoronaBoss boss;
+		Enemy* Boss = &boss;
+		quarantineZone(u,boss);
 	}
 
 	else if (r == 2)
@@ -144,72 +153,72 @@ Player store(Player u)//The store will have armor available depending on their l
 		}
 		else
 		{
-			u.setMoney(u.getMoney - H->getCost());
+			u.setMoney(u.getMoney() - H->getCost());
 			u.setArmor(H);
 		}
 		userInput(u);
 	}
 	else if (purchase == 2)
 	{
-		if (u.setMoney(u.getMoney - P->getCost()) < 0)//Verifying if they have enough money
+		if (u.setMoney(u.getMoney() - P->getCost()) < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
 		else
 		{
-			u.setMoney(u.getMoney - P->getCost());
+			u.setMoney(u.getMoney() - P->getCost());
 			u.setWeapon(P);
 		}
 		userInput(u);
 	}
 	else if (purchase == 3)
 	{
-		if (u.setMoney(u.getMoney - K->getCost()) < 0)//Verifying if they have enough money
+		if (u.setMoney(u.getMoney() - K->getCost()) < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
 		else
 		{
-			u.setMoney(u.getMoney - K->getCost());
+			u.setMoney(u.getMoney() - K->getCost());
 			u.setArmor(K);
 		}
 		userInput(u);
 	}
 	else if (purchase == 4)
 	{
-		if (u.setMoney(u.getMoney - R->getCost()) < 0)//Verifying if they have enough money
+		if (u.setMoney(u.getMoney() - R->getCost()) < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
 		else
 		{
-			u.setMoney(u.getMoney - R->getCost());
+			u.setMoney(u.getMoney() - R->getCost());
 			u.setWeapon(R);
 		}
 		userInput(u);
 	}
 	else if (purchase == 5)
 	{
-		if (u.setMoney(u.getMoney - M->getCost()) < 0)//Verifying if they have enough money
+		if (u.setMoney(u.getMoney() - M->getCost()) < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
 		else
 		{
-			u.setMoney(u.getMoney - M->getCost());
+			u.setMoney(u.getMoney() - M->getCost());
 			u.setArmor(M);
 		}
 		userInput(u);
 	}
 	else if (purchase == 6)
 	{
-		if (u.setMoney(u.getMoney - rG->getCost()) < 0)//Verifying if they have enough money
+		if (u.setMoney(u.getMoney() - rG->getCost()) < 0)
 		{
 			cout << "You do not have enough cash" << endl;
 		}
 		else
 		{
-			u.setMoney(u.getMoney - rG->getCost());
+			u.setMoney(u.getMoney() - rG->getCost());
 			u.setWeapon(rG);
 		}
 		userInput(u);
@@ -217,7 +226,7 @@ Player store(Player u)//The store will have armor available depending on their l
 	else
 	userInput(u);
 }
-void savePlayer(Player u)
+void savePlayer(Player u)//Player will exit the game after saving 
 {
 	string file;
 	ofstream userfile;
@@ -229,7 +238,7 @@ void savePlayer(Player u)
 	
 	exit(0);
 }
-Player quarantineZone(Player u)
+Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to keep fighting after they win or lose
 {
 	if (u.getLvl() < 5)
 	{
@@ -238,8 +247,8 @@ Player quarantineZone(Player u)
 		grunt->getLvl();
 		while (u.isHp0() == false || grunt->isHp0() == false)
 		{
-			grunt->setHp(grunt->getHp - u.getWeapon()->getDamage);
-			u.setHp((u.getHp() + u.getArmor()->getDefense()) - grunt->getDamage);
+			grunt->setHp(grunt->getHp() - u.getWeapon()->getDamage());
+			u.setHp((u.getHp() + u.getArmor()->getDefense()) - grunt->getDamage());
 		}
 		if (u.isHp0() == true)
 		{
@@ -263,8 +272,8 @@ Player quarantineZone(Player u)
 		special->getLvl();
 		while (u.isHp0() == false || special->isHp0() == false)
 		{
-			special->setHp(special->getHp - u.getWeapon()->getDamage);
-			u.setHp((u.getHp() + u.getArmor()->getDefense()) - special->getDamage);
+			special->setHp(special->getHp() - u.getWeapon()->getDamage());
+			u.setHp((u.getHp() + u.getArmor()->getDefense()) - special->getDamage());
 		}
 		if (u.isHp0() == true)
 		{
@@ -283,15 +292,15 @@ Player quarantineZone(Player u)
 	}
 	if (u.getLvl() == 10)
 	{
-		CoronaBoss b;
-		Enemy* BOSS = &b;
+		
+		Enemy* BOSS = &c;
 		BOSS->setHp(1000);
 		BOSS->setDamage(rand() % 350 + 200);
 		BOSS->setLvl(10);
 		while (u.isHp0() == false || BOSS->isHp0() == false)
 		{
-			BOSS->setHp(BOSS->getHp - u.getWeapon()->getDamage);
-			u.setHp((u.getHp() + u.getArmor()->getDefense()) - BOSS->getDamage);
+			BOSS->setHp(BOSS->getHp() - u.getWeapon()->getDamage());
+			u.setHp((u.getHp() + u.getArmor()->getDefense()) - BOSS->getDamage());
 		}
 		if (u.isHp0() == true)
 		{
@@ -299,7 +308,7 @@ Player quarantineZone(Player u)
 			u.setHp(100);
 			userInput(u);
 		}
-		else
+		else//After they beat the boss they win the game
 		{
 			cout << "YOU WIN" << endl;
 			u.setHp(100);

@@ -1,3 +1,6 @@
+//My name is Gaj Carson
+//This is my own work
+
 #ifndef ENEMY_H
 #define ENEMY_H
 
