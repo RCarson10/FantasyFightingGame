@@ -37,7 +37,7 @@ public:
 class pistol : public Weapon
 {
 public:
-	pistol(int c, int d, string n, string t) : Weapon(cost, damage, name, tier) {}
+	pistol() : Weapon(cost, damage, name, tier) {}
 		
 	void use() 
 	{ 
@@ -52,7 +52,7 @@ public:
 class rifle : public Weapon
 {
 public:
-	rifle(int c, int d, string n, string t) : Weapon(cost, damage, name, tier) {}
+	rifle() : Weapon(cost, damage, name, tier) {}
 
 	void use() 
 	{ 
@@ -67,7 +67,7 @@ public:
 class rayGun : public Weapon
 {
 public: 
-	rayGun(int c, int d, string n, string t) : Weapon(cost, damage, name, tier) {}
+	rayGun() : Weapon(cost, damage, name, tier) {}
 
 	void use() 
 	{ 

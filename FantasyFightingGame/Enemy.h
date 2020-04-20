@@ -43,13 +43,13 @@ public:
 class CoronaBoss : public Enemy
 {
 public:
-	CoronaBoss(int h, int l, string n, int d): Enemy(hp, lvl, name, damage) {}
+	CoronaBoss(): Enemy(hp, lvl, name, damage) {}
 	void use() {};
 };
 class CoronaSpecial : public Enemy
 {
 public:
-	CoronaSpecial(int h, int l, string n, int d): Enemy(hp, lvl, name, damage) {}
+	CoronaSpecial(): Enemy(hp, lvl, name, damage) {}
 	void use()
 	{
 		setHp(rand() % 750 + 500 );
@@ -63,7 +63,7 @@ public:
 class CoronaGrunt : public Enemy
 {
 public:
-	CoronaGrunt(int h, int l, string n, int d) : Enemy(hp, lvl, name, damage) {}
+	CoronaGrunt() : Enemy(hp, lvl, name, damage) {}
 	void use()
 	{
 		setHp(rand() % 500 + 100 );

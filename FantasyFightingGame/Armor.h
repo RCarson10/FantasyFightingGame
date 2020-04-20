@@ -37,7 +37,7 @@ public:
 class hazmatSuit : public Armor
 {
 public:
-	hazmatSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier){}
+	hazmatSuit() : Armor(cost, defense, name, tier){}
 
 	void use() 
 	{ 
@@ -53,7 +53,7 @@ public:
 class knightArmor : public Armor
 {
 public:
-	knightArmor(int c, int d, string n, string t) : Armor(cost, defense, name, tier) {}
+	knightArmor() : Armor(cost, defense, name, tier) {}
 
 	void use() 
 	{ 
@@ -69,7 +69,7 @@ public:
 class mechSuit : public Armor
 {
 public:
-	mechSuit(int c, int d, string n, string t) : Armor(cost, defense, name, tier) {}
+	mechSuit() : Armor(cost, defense, name, tier) {}
 		void use() 
 		{ 
 			setDefense(1000);
