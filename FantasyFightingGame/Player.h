@@ -36,17 +36,15 @@ public:
 		uWeapon = new pistol();
 		uArmor = new hazmatSuit();
 	}
-	/*Player(const Player& p) 
+	Player(const Player& p) 
 	{
 		hp = p.hp;
 		name = p.name;
 		money = p.money;
 		lvl = p.lvl;
-		*/
 		
-
-
-	//}
+		
+	}
 	string getName() { return name;  }
 	void setName(string n) { name = n; }
 	int getHp() { return hp; }
@@ -55,7 +53,7 @@ public:
 	void setLvl(int l) { lvl = l; }
 	int getMoney() { return money; }
 	void setMoney(int m) { money = m; }
-	bool isHp0() { return hp == 0; }
+	bool isHp0() { return hp <= 0; }
 	Armor* getArmor(){ return uArmor; }
 	void setArmor(Armor* a) { uArmor = a; }
 	Weapon* getWeapon() { return uWeapon; }

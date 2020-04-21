@@ -387,10 +387,11 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 	{
 		CoronaGrunt g;
 		Enemy* grunt = &g;
+		u.setHp(u.getHp() + u.getArmor()->getDefense());
 		while (u.isHp0() == false && grunt->isHp0() == false)
 		{
 			grunt->setHp(grunt->getHp() - u.getWeapon()->getDamage());
-			u.setHp((u.getHp() + u.getArmor()->getDefense()) - grunt->getDamage());
+			u.setHp(u.getHp() - grunt->getDamage());
 			
 		}
 		if (u.isHp0() == true)
@@ -413,10 +414,11 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 	{
 		CoronaSpecial s;
 		Enemy* special = &s;
+		u.setHp(u.getHp() + u.getArmor()->getDefense());
 		while (u.isHp0() == false && special->isHp0() == false)
 		{
 			special->setHp(special->getHp() - u.getWeapon()->getDamage());
-			u.setHp((u.getHp() + u.getArmor()->getDefense()) - special->getDamage());
+			u.setHp(u.getHp() - special->getDamage());
 			
 		}
 		if (u.isHp0() == true)
@@ -439,11 +441,12 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 	{
 		
 		Enemy* BOSS = &c;
-	
+		u.setHp(u.getHp() + u.getArmor()->getDefense());
 		while (u.isHp0() == false && BOSS->isHp0() == false)
 		{
+			
 			BOSS->setHp(BOSS->getHp() - u.getWeapon()->getDamage());
-			u.setHp((u.getHp() + u.getArmor()->getDefense()) - BOSS->getDamage());
+			u.setHp(u.getHp() - BOSS->getDamage());
 			
 		}
 		if (u.isHp0() == true)

@@ -38,7 +38,7 @@ public:
 	void setLvl(int l) { lvl = l; }
 	int getDamage() { return damage; }
 	void setDamage(int d) { damage = d; }
-	bool isHp0() { return hp == 0; }
+	bool isHp0() { return hp <= 0; }
 	virtual void use() = 0;
 
 
