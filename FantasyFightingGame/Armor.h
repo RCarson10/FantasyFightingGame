@@ -25,13 +25,13 @@ public:
 		cost = c;
 		defense = d;
 	}
-	int getCost() { return cost; }
+	int getCost()const { return cost; }
 	void setCost(int c) { cost = c; }
-	int getDefense() { return defense; }
+	int getDefense()const { return defense; }
 	void setDefense(int d) { defense = d; }
-	string getName() { return name;  }
+	string getName()const { return name;  }
 	void setName(string n) { name = n; }
-	string getTier() { return tier; }
+	string getTier()const { return tier; }
 	void setTier(string t) { tier = t; }
 	virtual void use() = 0;
 
@@ -41,7 +41,14 @@ class hazmatSuit : public Armor
 {
 public:
 	hazmatSuit() : Armor(100, 250, "HAZMATSUIT", "Low"){}
+	hazmatSuit(int c, int d, string n, string t) : Armor(c, d, n, t)
+	{
+		cost = c;
+		defense = d;
+		name = n;
+		tier = t;
 
+	}
 	void use() 
 	{ 
 		
@@ -53,6 +60,14 @@ class knightArmor : public Armor
 {
 public:
 	knightArmor() : Armor(500, 250, "KNIGHTARMOR", "Mid") {}
+	knightArmor(int c, int d, string n, string t) : Armor(c, d, n, t)
+	{
+		cost = c;
+		defense = d;
+		name = n;
+		tier = t;
+
+	}
 
 	void use() 
 	{ 
@@ -66,6 +81,14 @@ class mechSuit : public Armor
 {
 public:
 	mechSuit() : Armor(1000, 500, "MECHSUIT", "High") {}
+	mechSuit(int c, int d, string n, string t) : Armor(c, d, n, t)
+	{
+		cost = c;
+		defense = d;
+		name = n;
+		tier = t;
+
+	}
 		void use() 
 		{ 
 			

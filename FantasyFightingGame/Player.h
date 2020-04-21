@@ -43,7 +43,33 @@ public:
 		money = p.money;
 		lvl = p.lvl;
 		
-		
+		if (p.getWeapon()->getName() == "Pistol")
+		{
+			uWeapon = new pistol(p.getWeapon()->getCost(), p.getWeapon()->getDamage(), p.getWeapon()->getName(), p.getWeapon()->getTier());
+		}
+
+		if (p.getWeapon()->getName() == "Rifle")
+		{
+			uWeapon = new rifle(p.getWeapon()->getCost(), p.getWeapon()->getDamage(), p.getWeapon()->getName(), p.getWeapon()->getTier());
+		}
+
+		if (p.getWeapon()->getName() == "RayGun")
+		{
+			uWeapon = new pistol(p.getWeapon()->getCost(), p.getWeapon()->getDamage(), p.getWeapon()->getName(), p.getWeapon()->getTier());
+		}
+
+		if (p.getArmor()->getName() == "HAZMATSUIT")
+		{
+			uArmor = new hazmatSuit(p.getArmor()->getCost(), p.getArmor()->getDefense(), p.getArmor()->getName(), p.getArmor()->getTier());
+		}
+		if (p.getArmor()->getName() == "KNIGHTARMOR")
+		{
+			uArmor = new knightArmor(p.getArmor()->getCost(), p.getArmor()->getDefense(), p.getArmor()->getName(), p.getArmor()->getTier());
+		}
+		if (p.getArmor()->getName() == "MECHSUIT")
+		{
+			uArmor = new mechSuit(p.getArmor()->getCost(), p.getArmor()->getDefense(), p.getArmor()->getName(), p.getArmor()->getTier());
+		}
 	}
 	string getName() { return name;  }
 	void setName(string n) { name = n; }
@@ -54,16 +80,16 @@ public:
 	int getMoney() { return money; }
 	void setMoney(int m) { money = m; }
 	bool isHp0() { return hp <= 0; }
-	Armor* getArmor(){ return uArmor; }
+	Armor* getArmor()const{ return uArmor; }
 	void setArmor(Armor* a) { uArmor = a; }
-	Weapon* getWeapon() { return uWeapon; }
+	Weapon* getWeapon()const { return uWeapon; }
 	void setWeapon(Weapon* w) { uWeapon = w; }
 	void playerSheet()
 	{
-		cout << "Player Name: " << name << endl;
-		cout << "Player HP: " << hp << endl;
-		cout << "Player Money: " << money << endl;
-		cout << "Player Level: " << lvl << endl;
+		cout << "Player Name: " << getName() << endl;
+		cout << "Player HP: " << getHp() << endl;
+		cout << "Player Money: " << getMoney() << endl;
+		cout << "Player Level: " << getLvl() << endl;
 		if(uWeapon != nullptr)
 		cout << "Current weapon: " << uWeapon->getName() << endl;
 		if(uArmor != nullptr)

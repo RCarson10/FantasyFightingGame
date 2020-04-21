@@ -26,13 +26,13 @@ public:
 		cost = c;
 		damage = d;
 	}
-	int getCost() { return cost; }
+	int getCost()const { return cost; }
 	void setCost(int c) { cost = c; }
-	int getDamage() { return damage; }
+	int getDamage()const { return damage; }
 	void setDamage(int d) { damage = d; }
-	string getName() { return name; }
+	string getName()const { return name; }
 	void setName(string n) { name = n; }
-	string getTier() { return tier; }
+	string getTier()const { return tier; }
 	void setTier(string t) { tier = t; }
 	virtual void use() = 0;
 
@@ -41,6 +41,14 @@ class pistol : public Weapon
 {
 public:
 	pistol() : Weapon(150, ((rand() % 100) + 50), "Pistol", "Low") {}
+	pistol(int c, int d, string n, string t): Weapon(c,d,n,t)
+	{
+		cost = c;
+		damage = d;
+		name = n;
+		tier = t;
+
+	}
 		
 	void use() 
 	{ 
@@ -53,7 +61,14 @@ class rifle : public Weapon
 {
 public:
 	rifle() : Weapon(300, ((rand() % 115) + 85), "Rifle", "Mid") {}
+	rifle(int c, int d, string n, string t) : Weapon(c, d, n, t)
+	{
+		cost = c;
+		damage = d;
+		name = n;
+		tier = t;
 
+	}
 	void use() 
 	{ 
 	};
@@ -64,7 +79,14 @@ class rayGun : public Weapon
 {
 public: 
 	rayGun() : Weapon(650, ((rand() % 150) + 135), "RayGun", "High") {}
+	rayGun(int c, int d, string n, string t) : Weapon(c, d, n, t)
+	{
+		cost = c;
+		damage = d;
+		name = n;
+		tier = t;
 
+	}
 	void use() 
 	{ 
 		

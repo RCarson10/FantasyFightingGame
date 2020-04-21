@@ -13,7 +13,7 @@
 
 using namespace std;
 void savePlayer(Player u);
-void userInput(Player u);
+Player userInput(Player u);
 Player store(Player u);
 Player quarantineZone(Player u, CoronaBoss Boss);
 
@@ -163,7 +163,7 @@ do{
 		uPlayer.playerSheet();
 	}
 	//get player choice input
-	userInput(uPlayer);
+	uPlayer = userInput(uPlayer);
 
 	
 		
@@ -180,7 +180,7 @@ do{
 
 
 
-void userInput(Player u)//Using three numbers and calling the functions based on their choice
+Player userInput(Player u)//Using three numbers and calling the functions based on their choice
 {
 	int r;
 	cout << "Select 0 to go to the store, 1 to go to the Quarantine Zone, 2 to save your player, ";
@@ -205,9 +205,9 @@ void userInput(Player u)//Using three numbers and calling the functions based on
 	else if (r == 3)
 	{
 		u.playerSheet();
-		userInput(u);
+		u = userInput(u);
 	}
-	
+	return u;
 }
 
 
