@@ -25,7 +25,9 @@ int main()
 	string name;
 	Player uPlayer;
 	int result;
-		
+	
+
+	//load or new player logic
 cout << "Select 1 for new character or 0 to load one in" << endl;
 cin >> result;
 if (result == 1) //Introduction for new players
@@ -54,6 +56,8 @@ else if (result == 0)//Read in a previous player file
 	}
 	int health, level, money;
 	string name;
+
+	//read in player info
 	while (fin >> health >> level >> money >> name)
 	{
 		uPlayer.setHp(health);
@@ -61,12 +65,13 @@ else if (result == 0)//Read in a previous player file
 		uPlayer.setMoney(money);
 		uPlayer.setName(name);
 		
+		//determine if player has a weapon
 		Weapon* wp;
 		char ch;
 		fin >> ch;
 		if (ch != 'x')//read in weapon
 		{
-			
+			//build weapon
 			fin.putback(ch);
 			int damage, cost;
 			string  name, tier;
@@ -102,12 +107,15 @@ else if (result == 0)//Read in a previous player file
 			}
 			//rayGun
 		}
+		// no weapon
 		else uPlayer.setWeapon(nullptr);
+		
+		//check if player has armor
 		Armor* ar;
 		fin >> ch;
 		if (ch != 'x')//read in armor
 		{
-			
+			//build armor
 			fin.putback(ch);
 			int defense, cost;
 			string  name, tier;
@@ -137,15 +145,15 @@ else if (result == 0)//Read in a previous player file
 				ar->setDefense(defense);
 				ar->setName(name);
 				ar->setTier(tier);
+				uPlayer.setArmor(ar);
 
 			}
 		}
-		
+		//else no armor
 		else uPlayer.setArmor(nullptr);
 	}
 }
-else
-	cout << "Please enter a 1 or 0" << endl;
+
 do{
 	int input;
 	cout << "Enter 1 if you want to view your character sheet.  " << endl;
@@ -153,19 +161,25 @@ do{
 	if (input == 1)
 	{
 		uPlayer.playerSheet();
-		userInput(uPlayer);
 	}
+	//get player choice input
 	userInput(uPlayer);
 
 	
 		
 		
 
-}while (uPlayer.isHp0() == false || Boss->isHp0()== false);
+}while (!uPlayer.isHp0() && !Boss->isHp0());
 	
 
 	return 0;
 }
+
+
+
+
+
+
 void userInput(Player u)//Using three numbers and calling the functions based on their choice
 {
 	int r;
@@ -174,13 +188,13 @@ void userInput(Player u)//Using three numbers and calling the functions based on
 	cin >> r;
 	if (r == 0)
 	{
-		store(u);
+		u = store(u);
 	}
 	else if (r == 1) 
 	{
 		CoronaBoss boss;
 		Enemy* Boss = &boss;
-		quarantineZone(u,boss);
+		u = quarantineZone(u,boss);
 	}
 
 	else if (r == 2)
@@ -193,9 +207,17 @@ void userInput(Player u)//Using three numbers and calling the functions based on
 		u.playerSheet();
 		userInput(u);
 	}
-	else
-		cout << "Please enter a 1 or 0" << endl;
+	
 }
+
+
+
+
+
+
+
+
+
 Player store(Player u)//The store will have armor available depending on their level.
 {
 	cout << "Welcome to the store" << endl;
@@ -217,13 +239,13 @@ Player store(Player u)//The store will have armor available depending on their l
 	
 	
 	
-	if(u.getLvl() <= 3)//Must meet requirements of each weapon or armor
-	{
-		cout << "Enter 1 to buy hazmat, 2 for pistol " << endl;
-		cout << H->getName() << " " << H->getCost() << " " << H->getTier() << endl;
-		cout << P->getName() << " " << P->getCost() << " " << P->getTier() << endl;
-	}
-	 if (u.getLvl() >= 7)
+	//Must meet requirements of each weapon or armor
+	
+	cout << "Enter 1 to buy hazmat, 2 for pistol " << endl;
+	cout << H->getName() << " " << H->getCost() << " " << H->getTier() << endl;
+	cout << P->getName() << " " << P->getCost() << " " << P->getTier() << endl;
+	
+	if (u.getLvl() >= 7)
 	{
 		cout << "Enter 3 to buy knightSuit, 4 for rifle " << endl;
 		cout << K->getName() << " " << K->getCost() << " " << K->getTier() << endl;
@@ -251,7 +273,7 @@ Player store(Player u)//The store will have armor available depending on their l
 			u.setMoney(u.getMoney() - H->getCost());
 			u.setArmor(H);
 		}
-		userInput(u);
+		
 	}
 	else if (purchase == 2)
 	{
@@ -264,7 +286,7 @@ Player store(Player u)//The store will have armor available depending on their l
 			u.setMoney(u.getMoney() - P->getCost());
 			u.setWeapon(P);
 		}
-		userInput(u);
+	
 	}
 	else if (purchase == 3)
 	{
@@ -277,7 +299,7 @@ Player store(Player u)//The store will have armor available depending on their l
 			u.setMoney(u.getMoney() - K->getCost());
 			u.setArmor(K);
 		}
-		userInput(u);
+		
 	}
 	else if (purchase == 4)
 	{
@@ -290,7 +312,7 @@ Player store(Player u)//The store will have armor available depending on their l
 			u.setMoney(u.getMoney() - R->getCost());
 			u.setWeapon(R);
 		}
-		userInput(u);
+	
 	}
 	else if (purchase == 5)
 	{
@@ -303,7 +325,7 @@ Player store(Player u)//The store will have armor available depending on their l
 			u.setMoney(u.getMoney() - M->getCost());
 			u.setArmor(M);
 		}
-		userInput(u);
+		
 	}
 	else if (purchase == 6)
 	{
@@ -316,12 +338,18 @@ Player store(Player u)//The store will have armor available depending on their l
 			u.setMoney(u.getMoney() - rG->getCost());
 			u.setWeapon(rG);
 		}
-		userInput(u);
+		
 	}
-	else
-	userInput(u);
+
+	
 	return u;
 }
+
+
+
+
+
+
 void savePlayer(Player u)//Player will exit the game after saving 
 {
 	string file;
@@ -347,6 +375,11 @@ void savePlayer(Player u)//Player will exit the game after saving
 	userfile.close();
 	
 }
+
+
+
+
+
 Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to keep fighting after they win or lose
 {
 	cout << "Welcome to the Quarantine Zone" << endl;
@@ -354,7 +387,6 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 	{
 		CoronaGrunt g;
 		Enemy* grunt = &g;
-		grunt->getLvl();
 		while (u.isHp0() == false && grunt->isHp0() == false)
 		{
 			grunt->setHp(grunt->getHp() - u.getWeapon()->getDamage());
@@ -381,7 +413,6 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 	{
 		CoronaSpecial s;
 		Enemy* special = &s;
-		special->getLvl();
 		while (u.isHp0() == false && special->isHp0() == false)
 		{
 			special->setHp(special->getHp() - u.getWeapon()->getDamage());
@@ -404,7 +435,7 @@ Player quarantineZone(Player u, CoronaBoss c)//Player will have the option to ke
 		}
 		
 	}
-	if (u.getLvl() == 10)
+	if (u.getLvl() >= 10)
 	{
 		
 		Enemy* BOSS = &c;
